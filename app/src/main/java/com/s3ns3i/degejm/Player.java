@@ -1,8 +1,15 @@
 package com.s3ns3i.degejm;
 
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.widget.Toast;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+
+import static android.app.PendingIntent.getActivity;
+import static android.media.MediaPlayer.*;
 
 
 public class Player{
@@ -15,6 +22,8 @@ public class Player{
 	private CharacterClass className_;
 	private Integer healthPoints_;
 	private Integer manaPoints_;
+    private Integer currentManaPoints_;
+    private Integer currnetHealthPoints_;
 	private Integer manaPointsRegen_;
 	private Integer strength_;
 	private Integer inteligence_;
@@ -22,6 +31,10 @@ public class Player{
 	
 	private Integer magicDefense_;
 	private Integer meeleDefense_;
+    private Integer armor_;
+    private Integer will_;
+    private Integer damage_;
+    private Integer specialDamage_;
 	
 	private ArrayList<Skill> skillBar = new ArrayList<Skill>();
 	
@@ -39,15 +52,18 @@ public class Player{
 	private Boots boots_;
 	private Ring ring1_;
 	private Ring ring2_;
-	
+    private boolean death;
 
+
+
+    ;
 	
 	//==============================================
 	//C-tors
 	public Player(){
-		
+		death=false;
 	}
-	
+
 	public Player(String characterName
 				 ,CharacterClass className
 				 ,CharacterRace characterRace
@@ -61,9 +77,11 @@ public class Player{
 		strength_=strength;
 		agility_=agility;
 		inteligence_=inteligence;
-		
+        death=false;
 	}
-	//===================NON GETTER/SETTER METHODS=========================
+
+
+    //===================NON GETTER/SETTER METHODS=========================
 	
 	
 	public void setCurrentHpAfterCombat(Integer magicDamage,Integer meeleDamage){
@@ -71,6 +89,10 @@ public class Player{
 			this.healthPoints_-=(meeleDamage-this.meeleDefense_);
 		if((magicDamage-this.magicDefense_)>0)
 			this.healthPoints_-=(magicDamage-this.magicDefense_);
+
+        if(currnetHealthPoints_<=0){
+            death=true;
+        }
 	}
 	/*
 	public Skills onSkillClickListener(){
@@ -80,9 +102,53 @@ public class Player{
 		
 		return damage;	
 	}
-	
+
 	*/
-	
+
+    public void calculateMaxHP(){
+        try {
+            this.healthPoints_ = this.characterRace_.getBaseHP() * this.className_.getHpModifier_();
+        }
+        catch(Exception e){
+            this.healthPoints_=300;
+        }
+    }
+
+    public void calculateMaxMana(){
+        try {
+            this.manaPoints_=this.characterRace_.getBaseMana()*this.className_.getManaModifier_();
+        } catch (Exception e) {
+            this.manaPoints_=300;
+        }
+    }
+
+    public void calculateDamage(){
+
+    }
+
+    public void calculateSpecialDamage(){
+
+    }
+
+    public void calculateWill(){
+        try{
+            this.will_=this.chestArmor_.getMagicDefense_()+this.boots_.getMagicDefense_()+this.gloves_.getMagicDefense_()+
+                    this.helmet_.getMagicDefense_()+this.ring1_.getMagicDefense_()+this.ring2_.getMagicDefense_()+this.offhand_.getMagicDefense_()+
+                    this.weapon_.getMagicDefense_()+this.inteligence_;
+        }catch(Exception e){
+
+        }
+    }
+
+    public void calculateArmor(){
+        try{
+            this.armor_=this.chestArmor_.getMeeleDefense_()+this.boots_.getMeeleDefense_()+this.gloves_.getMeeleDefense_()+
+                    this.helmet_.getMeeleDefense_()+this.ring1_.getMeeleDefense_()+this.ring2_.getMeeleDefense_()+this.offhand_.getMeeleDefense_()+
+                    this.weapon_.getMeeleDefense_()+this.agility_;
+        }catch(Exception e){
+
+        }
+    }
 	//====================END OF NON GETTER/SETTER METHODS=================
 	public String GetCharacterName(){
 	return characterName_;
@@ -270,14 +336,14 @@ public class Player{
 		this.characterName_ = characterName_;
 	}
 	/**
-	 * @param characterRace_ the characterRace_ to set
-	 */
+     * @param characterRace_ the characterRace_ to set
+     */
 	public void setCharacterRace_(CharacterRace characterRace_) {
 		this.characterRace_ = characterRace_;
 	}
 	/**
-	 * @param className_ the className_ to set
-	 */
+     * @param className_ the className_ to set
+     */
 	public void setClassName_(CharacterClass className_) {
 		this.className_ = className_;
 	}
@@ -395,8 +461,55 @@ public class Player{
 	public void setring2_(Ring ring2_) {
 		this.ring2_ = ring2_;
 	}
-	
-	
+
+
+    public Integer getCurrentManaPoints_() {
+        return currentManaPoints_;
+    }
+
+    public void setCurrentManaPoints_(Integer currentManaPoints_) {
+        this.currentManaPoints_ = currentManaPoints_;
+    }
+
+    public Integer getCurrnetHealthPoints_() {
+        return currnetHealthPoints_;
+    }
+
+    public void setCurrnetHealthPoints_(Integer currnetHealthPoints_) {
+        this.currnetHealthPoints_ = currnetHealthPoints_;
+    }
+
+    public Integer getArmor_() {
+        return armor_;
+    }
+
+    public void setArmor_(Integer armor_) {
+        this.armor_ = armor_;
+    }
+
+    public Integer getWill_() {
+        return will_;
+    }
+
+    public void setWill_(Integer will_) {
+        this.will_ = will_;
+    }
+
+    public Integer getDamage_() {
+        return damage_;
+    }
+
+    public void setDamage_(Integer damage_) {
+        this.damage_ = damage_;
+    }
+
+    public Integer getSpecialDamage_() {
+        return specialDamage_;
+    }
+
+    public void setSpecialDamage_(Integer specialDamage_) {
+        this.specialDamage_ = specialDamage_;
+    }
 }
 
 //=====================================

@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.s3ns3i.degejm.ArenaFragment"
+    android:id="@+id/fragment_arena_relative_layout"
+    android:background="#444444">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/IVattack"
+        android:contentDescription="@drawable/attack_icon"
+        android:background="@drawable/attack_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/IVblock"
+        android:background="@drawable/block_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/PBhealth"
+        android:indeterminate="false"
+        android:progressDrawable="@drawable/progress_bar_custom"
+        android:progress="80"
+        android:layout_above="@+id/PBmana"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/PBmana"
+        android:indeterminate="false"
+        android:layout_above="@+id/IVattack"
+        android:progressDrawable="@drawable/progress_bar_custom_mana"
+        android:progress="40"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/EnemiesLV"
+        android:dividerHeight="10px"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/PBhealth"
+        android:choiceMode="singleChoice" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/IVspecial"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/special_attack"/>
+
+</RelativeLayout>

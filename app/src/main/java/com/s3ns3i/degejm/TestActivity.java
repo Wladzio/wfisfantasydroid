@@ -114,8 +114,8 @@ public class TestActivity extends Activity
 		
 		//pDialog.dismiss();
 		//finish();
-		//No wszystko fajnie, tylko jak potem zamkn¹æ to okienko i wywo³aæ finish? mo¿na to zrobiæ w procesie?
-		//da siê: http://stackoverflow.com/questions/8623823/finish-the-calling-activity-when-asynctask-completes
+		//No wszystko fajnie, tylko jak potem zamknï¿½ï¿½ to okienko i wywoï¿½aï¿½ finish? moï¿½na to zrobiï¿½ w procesie?
+		//da siï¿½: http://stackoverflow.com/questions/8623823/finish-the-calling-activity-when-asynctask-completes
 		return;
 	}
 }

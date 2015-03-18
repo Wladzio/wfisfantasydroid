@@ -1,7 +1,6 @@
 package com.s3ns3i.degejm;
 
 
-//Listê klas trzeba bêdzie tworzyæ.
 public class CharacterClass{
 
 private Integer classID_;

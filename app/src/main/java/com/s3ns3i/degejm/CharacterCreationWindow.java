@@ -3,7 +3,7 @@
  * */
 package com.s3ns3i.degejm;
 
-// TODO Trzeba zrobiæ odbieranie id przy tworzeniu postaci i zapisywanie go na dysku urz¹dzenia.
+// TODO Trzeba zrobiï¿½ odbieranie id przy tworzeniu postaci i zapisywanie go na dysku urzï¿½dzenia.
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -37,7 +37,7 @@ public class CharacterCreationWindow extends Activity {
 			 * There we can initialize fragments.
 			 * Now I'm initializing connection fragment, because I need to collect
 			 * data from the server first.
-			 * When it will be done, I'll swap this fragment with character creating one.
+			 * When it will finish, I'll swap this fragment with character creating one.
 			 */
 					.add(R.id.container, new CharacterCreationFragment()).commit();
 		}
@@ -140,8 +140,8 @@ public class CharacterCreationWindow extends Activity {
 //			//	DELETE AFTER ADDING THIS MODULE TO A MENU AND PASS PLAYER AS AN ARGUMENT INSTEAD
 //			//=============================================================================================
 //			/**	TODO
-//			 * Nie mogê utworzyæ gracza bez wstawiania czegoœ do konstruktora.
-//			 * Muszê utworzyæ gracza bez ¿adnych wstêpnych danych bo one s¹ dodawane dopiero póŸniej.
+//			 * Nie mogï¿½ utworzyï¿½ gracza bez wstawiania czegoï¿½ do konstruktora.
+//			 * Muszï¿½ utworzyï¿½ gracza bez ï¿½adnych wstï¿½pnych danych bo one sï¿½ dodawane dopiero pï¿½niej.
 //			 */
 //			//player = new Player();
 //			//=============================================================================================
